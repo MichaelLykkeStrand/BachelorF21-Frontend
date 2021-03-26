@@ -13,8 +13,11 @@
 				"http://localhost:3600/auth",
 				user
 			);
+			axios.defaults.headers.common = {'Authorization': `Bearer ${response.data.accessToken}`}
 			$session.accessToken = response.data.accessToken;
-			console.log($session.accessToken);
+			$session.refreshToken = response.data.refreshToken;
+			$session.userId = response.data.userId;
+			console.log("Userid: " +$session.userId + " has sessiontoken: " + $session.refreshToken);
 			//inProgress = false;
 			//error = null;
 			user = { email: "", password: "" };
@@ -46,7 +49,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
 		crossorigin="anonymous"></script>
-	<meta name="referrer" content="no-referrer">
+	<meta name="referrer" content="no-referrer-when-downgrade">
 </svelte:head>
 
 <body>
