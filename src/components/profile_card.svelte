@@ -2,13 +2,14 @@
 	import { goto, stores } from "@sapper/app";
 	import axios from "axios";
 
-    let user = { email: "pehun18@student.sdu.dk", password: "RqPC9hAKz77DmNE" };
 	const { session } = stores();
 	let inProgress = false;
 
     const config = {
         headers: { Authorization: `Bearer ` + $session.accessToken }
     };
+
+    
 
     async function refreshToken() {
         let refresh_token = {refresh_token : $session.refreshToken};

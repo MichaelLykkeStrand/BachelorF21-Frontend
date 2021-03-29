@@ -1,6 +1,14 @@
 <script>
+	import randomWords from "random-words";
 	import Navbar from '../components/navbar.svelte';
 	import ProfileCard from '../components/profile_card.svelte';
+	import CourseCard from '../components/course_card.svelte';
+	import CourseCardView from '../components/course_card_view.svelte';
+
+	let courseList = ["Flyk", "BSC"]
+
+	
+
 </script>
 
 <svelte:head>
@@ -26,7 +34,9 @@
 </svelte:head>
 
 <body>
-	<ProfileCard></ProfileCard>	
+	<CourseCardView>
+		
+	</CourseCardView>
 </body>
 
 <style>
