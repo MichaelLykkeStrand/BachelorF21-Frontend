@@ -4,6 +4,7 @@
 
 	const { session } = stores();
 	let inProgress = false;
+    let user;
 
     const config = {
         headers: { Authorization: `Bearer ` + $session.accessToken }
@@ -49,7 +50,7 @@
 <div class="container shadow py-2">
     <div class="row">
         <div class="col-4 d-flex">
-            <img src="http://placehold.it/150X150" class="rounded-circle" />
+            <img src="http://placehold.it/150X150" alt="http://placehold.it/150X150" class="rounded-circle" />
         </div>
         <div class="col ">
             <h2 class="font-weight-light">{user.firstName}}</h2>

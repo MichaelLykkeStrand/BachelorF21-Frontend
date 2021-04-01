@@ -16,7 +16,7 @@ polka() // You can also use Express
 		bodyParser.json(),
 		session({
 		secret: 'yoursessionsecretkey',
-		resave: false,
+		resave: true,
 		saveUninitialized: true,
 		cookie: {
 			maxAge: 43200000
@@ -28,9 +28,11 @@ polka() // You can also use Express
 		compression({ threshold: 0 }),
 		sirv('static', { dev }),
 		sapper.middleware({
-			session: req => ({
-				user: req.session && req.session.user
-			})
+			session: req => {
+				return ({
+					token: req.session.token, userId: req.session.userId
+				})
+			}
 		})
 	)
 	.listen(PORT, err => {

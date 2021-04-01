@@ -19,7 +19,7 @@
     getCourses().catch(console.log("promise rejected for courseget"));
 </script>
 
-<div class="rounded-3 border border-dark container-fluid my-2 p-2 bg-dark w-25" style="min-width: 200px;">
+<button class="rounded-3 border border-dark container-fluid m-2 p-2 bg-dark w-25" style="min-width: 200px;">
     <div class="row" style="height: 230px;">
         <div class="col-sm ">
             <h5 class="text-white-50">
@@ -30,4 +30,4 @@
             </h5>        
         </div>
     </div>
-</div>
+</button>

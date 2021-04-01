@@ -1,14 +1,20 @@
 <script>
+	import { goto } from "@sapper/app";
 	import randomWords from "random-words";
 	import Navbar from '../components/navbar.svelte';
 	import ProfileCard from '../components/profile_card.svelte';
 	import CourseCard from '../components/course_card.svelte';
 	import CourseCardView from '../components/course_card_view.svelte';
 
-	let courseList = ["Flyk", "BSC"]
-
-	
-
+</script>
+<script context="module">
+	export async function preload(page, session){
+		const { token } = session;
+		console.log("running preload")
+		if(!token){
+			return this.redirect(302, "");
+		}
+	}
 </script>
 
 <svelte:head>
@@ -35,17 +41,11 @@
 
 <body>
 	<CourseCardView>
-		
 	</CourseCardView>
 </body>
 
 <style>
 	body {
   padding-top: 60px;
-}
-@media (max-width: 979px) {
-  body {
-    padding-top: 0px;
-  }
 }
 </style>

@@ -22,7 +22,7 @@
 
 </script>
 
-<div class="container">
+<div class="container d-flex">
     <div class="row m-2">
         {#each courseList as name, i}
             <CourseCard courseId={name}>
