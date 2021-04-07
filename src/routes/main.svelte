@@ -10,9 +10,10 @@
 <script context="module">
 	export async function preload(page, session){
 		const { token } = session;
-		console.log("running preload")
+		console.log(token);
 		if(!token){
-			return this.redirect(302, "");
+			console.log("REDIRECTED TO LOGIN")
+			// return this.redirect(302, "");
 		}
 	}
 </script>

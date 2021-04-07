@@ -3,9 +3,12 @@
 	import axios from "axios";
 
     export let courseId;
+    const { session } = stores();
+
     let courseName;
     async function getCourses(){
         try {
+            axios.defaults.headers.common = {'Authorization': `Bearer ${$session.token}`};
 			const response = await axios.get(
 				("http://localhost:3600/courses/" + courseId)
 			);
