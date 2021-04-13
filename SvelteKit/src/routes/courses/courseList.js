@@ -1,7 +1,7 @@
 import * as api from '$lib/api.js';
 
 export async function post({ params, context }){
-	const resp = await api.get("users/courses/" + context.user.userId, context.user.token);
+	const resp = await api.get("users/courses/y", context.user.token);
 	// getCourses(context).then((r) => {return r}).catch((err) => {console.log(err)});
 	// console.log("Resp: " + resp.courses);
 	// return resp.courses;
