@@ -2,7 +2,6 @@ import * as api from '$lib/api.js';
 
 export async function get({ query, context}){
     const resp = await api.get("courses/"+query.get("courseId"), context.user.token);
-    console.log(resp);
 	return respond(resp);
 }
 

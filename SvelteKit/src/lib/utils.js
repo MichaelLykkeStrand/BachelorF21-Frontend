@@ -1,4 +1,9 @@
-export function post(endpoint, data) {
+export async function post(endpoint, data) {
+	const fetch =
+		typeof window !== 'undefined'
+			? window.fetch
+			: await import('node-fetch').then((mod) => mod.default);
+
 	console.log("utils post ran");
 	return fetch(endpoint, {
 		method: 'POST',
@@ -10,7 +15,12 @@ export function post(endpoint, data) {
 	}).then((r) => r.json());
 }
 
-export function get(endpoint, data) {
+export async function get(endpoint, data) {
+	const fetch =
+		typeof window !== 'undefined'
+			? window.fetch
+			: await import('node-fetch').then((mod) => mod.default);
+
 	console.log("utils post ran");
 	return fetch(endpoint, {
 		method: 'GET',
