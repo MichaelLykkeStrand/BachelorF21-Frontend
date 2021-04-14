@@ -4,17 +4,21 @@ import * as api from '$lib/api.js';
 export async function get({ params, context }){
     try {
         const { slug } = params;
-        let courseName = await getCourse(slug, context.user.token);
-        // courseName = JSON.stringify(courseName);
-        console.log(courseName);
+        console.log("2");
+        let course = await getCourse(slug, context.user.token);
+        console.log("3");
+        // courseName = JSON.stringify(course);
+        //console.log(course);
         // if (courseName){
         //     //console.log(resp.name);
         //     return courseName;
         // }
-        // return {
-        //     headers: ```'Content-Type': 'application/json'```,
-		// 	body: courseName
-		// };
+        return {
+            body: course,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+		};
     } catch (err) {
         console.log('yep cock :' + err);
     }
@@ -23,5 +27,5 @@ export async function get({ params, context }){
 async function getCourse(courseId, token){
     let resp = await api.get(`courses/${courseId}`, token);
     
-    return resp.name;    
+    return resp;    
 }

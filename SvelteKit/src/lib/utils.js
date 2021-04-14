@@ -4,7 +4,6 @@ export async function post(endpoint, data) {
 			? window.fetch
 			: await import('node-fetch').then((mod) => mod.default);
 
-	console.log("utils post ran");
 	return fetch(endpoint, {
 		method: 'POST',
 		credentials: 'include',

@@ -6,11 +6,10 @@
 			return { redirect: `/login`, status: 302 };
 		} else {
 			try {
-				const courses = await fetch(`/course/${page.params.slug}.json`);
-				//console.log(res);
+				let course = await fetch(`/course/${page.params.slug}.json`).then((r) => r.json());
 				return {
 					props: {
-						courses
+						coursee: await course.name
 					}
 				};
 			} catch (err) {
@@ -22,9 +21,11 @@
 </script>
 
 <script>
-	export let courses;
+	export let coursee;
+	console.log("5");
+	console.log("Course prop: " + coursee);
 </script>
 
 <body>
-	<h1>{courses}</h1>
+	<h1>{coursee}</h1>
 </body>
