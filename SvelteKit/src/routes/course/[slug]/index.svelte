@@ -7,9 +7,9 @@
 		} else {
 			try {
 				let course = await fetch(`/course/${page.params.slug}.json`).then((r) => r.json());
-				return {
+				return {	
 					props: {
-						coursee: await course.name
+						course: await course
 					}
 				};
 			} catch (err) {
@@ -21,11 +21,10 @@
 </script>
 
 <script>
-	export let coursee;
-	console.log("5");
-	console.log("Course prop: " + coursee);
+	export let course;
+	console.log(course.tasks);
 </script>
 
 <body>
-	<h1>{coursee}</h1>
+	<h1>{course.name}</h1>
 </body>

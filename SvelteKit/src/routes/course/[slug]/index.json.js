@@ -4,15 +4,7 @@ import * as api from '$lib/api.js';
 export async function get({ params, context }){
     try {
         const { slug } = params;
-        console.log("2");
         let course = await getCourse(slug, context.user.token);
-        console.log("3");
-        // courseName = JSON.stringify(course);
-        //console.log(course);
-        // if (courseName){
-        //     //console.log(resp.name);
-        //     return courseName;
-        // }
         return {
             body: course,
             headers: {
