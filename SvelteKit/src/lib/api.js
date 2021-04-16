@@ -16,7 +16,7 @@ async function send({ method, path, data, token }) {
 		typeof window !== 'undefined'
 			? window.fetch
 			: await import('node-fetch').then((mod) => mod.default);
-
+			
 	return fetch(`${base}/${path}`, opts)
 		.then((r) => r.text())
 		.then((json) => {

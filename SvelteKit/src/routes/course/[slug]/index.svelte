@@ -1,5 +1,6 @@
 <script context="module">
 	import { get } from '$lib/utils.js';
+	import TaskCard from '../../components/courses/task.svelte'
 	export async function load({ page, session, fetch }) {
 		const { slug } = page.params;
 		if (!session.user) {
@@ -22,9 +23,13 @@
 
 <script>
 	export let course;
-	console.log(course.tasks);
 </script>
 
-<body>
-	<h1>{course.name}</h1>
-</body>
+<div class="container d-flex">
+    <div class="row m-2">
+        {#each course.tasks as taskId, i}
+            <TaskCard taskId={taskId}>
+            </TaskCard>
+        {/each}
+    </div>
+</div>

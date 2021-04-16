@@ -1,16 +1,21 @@
 <script>
-	import { get } from '$lib/utils.js';
+    import { get } from '$lib/utils.js';
+    import { onMount } from 'svelte';
 	export let taskId;
 	let task = { description: '', type: '' };
 
 	async function getTask() {
 		try {
-			let resp = await get('tasks/task?taskId=' + taskId);
-			task = resp;
+			let resp = await get('courses/task?taskId=' + taskId);
+            task = resp;
+            task = task;
 		} catch (err) {
-			console.log('i failed at getting courses:) this is why:' + err);
+			console.log(err);
 		}
-	}
+    }
+    onMount(async () => {
+        getTask().catch(r => {console.log("failed at getting task")});
+	});
 </script>
 
 <div
