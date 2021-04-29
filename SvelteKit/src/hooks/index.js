@@ -13,7 +13,7 @@ export function getSession({ context }) {
     return{
         user: context.user && {
             userId: context.user.userId,
-            token: context.user.token
+            token: context.user.token,
         }
     }
 }

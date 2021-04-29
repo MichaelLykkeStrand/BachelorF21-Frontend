@@ -3,9 +3,9 @@
     import { onMount } from 'svelte';
 
 	export let taskId;
-	
-	let task = { description: '', type: '' };
+	export let userId;
 
+	let task = { description: '', type: '' };
 	async function getTask() {
 		try {
 			let resp = await get('tasks/task?taskId=' + taskId);
@@ -28,6 +28,12 @@
 		<div style="font-weight: bold;">Description</div>
 		<p>{task.description}</p>
 		{/if}
+		<p>{task.completedBy}</p>
+		{#each task.completedBy as user}
+			{#if userId == user}
+			<p>{task.completedBy}</p>
+			{/if}
+		{/each}
 	  </blockquote>
 	</div>
 </div>
