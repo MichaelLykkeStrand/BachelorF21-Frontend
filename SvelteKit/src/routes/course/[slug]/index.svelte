@@ -28,12 +28,16 @@
 <br/>
 <div class="container d-flex">
     <div>
-		<h3 style="color:DimGrey;">Tasks</h3>
-        {#each course.tasks as taskId, i}
-			<br />
-            <TaskCard taskId={taskId}>
-            </TaskCard>
-        {/each}
-
+		<div>
+			<h3 style="color:DimGrey;">{course.name}</h3>
+		</div>
+		<div>
+			<h3 style="color:DimGrey;">Tasks</h3>
+			{#each course.tasks as taskId, i}
+				<br />
+				<TaskCard taskId={taskId}>
+				</TaskCard>
+			{/each}
+		</div>
     </div>
 </div>
