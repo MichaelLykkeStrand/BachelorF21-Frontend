@@ -4,12 +4,12 @@ export async function post(req){
     const res = await api.post("auth", 
         req.body
     );
-
+	console.log("RES: " + res);
     return respond(res);
 }
 
 function respond(body) {
-	if (body.errors) {
+	if (!body.user) {
 		return { status: 401, body };
 	}
 
