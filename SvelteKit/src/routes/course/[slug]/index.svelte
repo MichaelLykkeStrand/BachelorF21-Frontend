@@ -26,10 +26,12 @@
 </script>
 
 <div class="container d-flex">
-    <div class="row m-2">
+    <div>
         {#each course.tasks as taskId, i}
+			<br />
             <TaskCard taskId={taskId}>
             </TaskCard>
         {/each}
+
     </div>
 </div>

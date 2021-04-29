@@ -1,7 +1,9 @@
 <script>
     import { get } from '$lib/utils.js';
     import { onMount } from 'svelte';
+
 	export let taskId;
+	
 	let task = { description: '', type: '' };
 
 	async function getTask() {
@@ -18,18 +20,16 @@
 	});
 </script>
 
-<div
-	class="rounded-3 border border-dark container-fluid m-2 p-2 bg-dark w-25"
-	style="min-width: 200px;"
->
-	<div class="row" style="height: 230px;">
-		<div class="col-sm ">
-			<h5 class="text-white-50">
-				{task.name}
-			</h5>
-			{#if task.type != 'VR'}
-				<p>{task.description}</p>
-			{/if}
-		</div>
+
+<div class="card">
+	<h5 class="card-header" style="font-weight: bold; color:DimGrey;">{task.name}</h5>
+	<div class="card-body">
+	  <blockquote class="blockquote mb-0">
+		{#if task.type != 'VR'}
+		<div style="font-weight: bold;">Description</div>
+		<p>{task.description}</p>
+		{/if}
+	  </blockquote>
 	</div>
 </div>
+
