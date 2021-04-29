@@ -20,7 +20,7 @@ export async function get(endpoint, data) {
 			? window.fetch
 			: await import('node-fetch').then((mod) => mod.default);
 
-	console.log(`API TOTALLY NOT ABSOLUTE ENDPOINT:  ${endpoint}`);
+	console.log(`API TOTALLY NOT ABSOLUTE ENDPOINT: ` + endpoint);
 
 	return fetch(endpoint, {
 		method: 'GET',

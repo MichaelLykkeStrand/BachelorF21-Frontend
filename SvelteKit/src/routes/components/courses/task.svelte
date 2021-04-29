@@ -6,7 +6,7 @@
 
 	async function getTask() {
 		try {
-			let resp = await get('courses/task?taskId=' + taskId);
+			let resp = await get('tasks/task?taskId=' + taskId);
             task = resp;
             task = task;
 		} catch (err) {
@@ -27,7 +27,7 @@
 			<h5 class="text-white-50">
 				{task.name}
 			</h5>
-			{#if task.type != 'vr'}
+			{#if task.type != 'VR'}
 				<p>{task.description}</p>
 			{/if}
 		</div>
