@@ -11,8 +11,9 @@
         if(res.user){
             $session.user = res.user;
             goto("/courses");    
-        }
-		goto("/error");
+        } else{
+			goto("/error");
+		}
 	}
 </script>
 
