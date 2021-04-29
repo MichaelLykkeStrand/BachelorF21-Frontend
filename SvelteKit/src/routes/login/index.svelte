@@ -12,7 +12,7 @@
             $session.user = res.user;
             goto("/courses");    
         }
-        
+		goto("/error");
 	}
 </script>
 
