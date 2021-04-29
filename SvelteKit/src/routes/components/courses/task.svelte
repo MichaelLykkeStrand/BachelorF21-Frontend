@@ -20,7 +20,6 @@
 	});
 </script>
 
-
 <div class="card">
 	<h5 class="card-header" style="font-weight: bold; color:DimGrey;">{task.name}</h5>
 	<div class="card-body">

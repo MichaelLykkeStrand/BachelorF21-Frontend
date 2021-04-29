@@ -25,8 +25,10 @@
 	export let course;
 </script>
 
+<br/>
 <div class="container d-flex">
     <div>
+		<h3 style="color:DimGrey;">Tasks</h3>
         {#each course.tasks as taskId, i}
 			<br />
             <TaskCard taskId={taskId}>
