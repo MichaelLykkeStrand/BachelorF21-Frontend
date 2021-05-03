@@ -10,9 +10,11 @@ export function getContext({ headers }){
 }
 
 export function getSession({ context }) {
+    console.log(context.user)
     return{
         user: context.user && {
-            userId: context.user.userId,
+            userId: context.user.userData.userId,
+            userData: context.user.userData,
             token: context.user.token,
         }
     }

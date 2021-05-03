@@ -29,11 +29,7 @@
 		<p>{task.description}</p>
 		{/if}
 		<p>{task.completedBy}</p>
-		{#each task.completedBy as user}
-			{#if userId == user}
-			<p>{task.completedBy}</p>
-			{/if}
-		{/each}
+
 	  </blockquote>
 	</div>
 </div>
