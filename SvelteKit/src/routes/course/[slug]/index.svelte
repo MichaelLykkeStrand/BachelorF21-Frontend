@@ -25,13 +25,28 @@
 
 <script>
 	export let course;
+
+	function handleClick() {
+			alert('clicked');
+		}
 </script>
 
+<button on:click={handleClick}>
+	Click me
+</button>
 <br/>
+
+{#if course.instructors == userId}
+<h5>{course.instructors}</h5>
+<h5>{userId}</h5>
+{/if}
+
+
 <div class="container d-flex">
     <div>
 		<div>
 			<h3 style="color:DimGrey;">{course.name}</h3>
+			
 		</div>
 		<div>
 			<h3 style="color:DimGrey;">Tasks</h3>
