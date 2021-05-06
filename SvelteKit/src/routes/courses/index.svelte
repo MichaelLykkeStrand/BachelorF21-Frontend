@@ -1,5 +1,6 @@
 <script>
     import CourseCardView from '../components/courses/course_card_view.svelte';
+    import Navbar from '../components/newNavbar/newNavbar.svelte';
     import { post } from '$lib/api.js';
 </script>
 
@@ -14,9 +15,9 @@
     }
 </script>
 
-
-
 <body>
+    <Navbar>
+    </Navbar>
 	<CourseCardView>
     </CourseCardView>
 </body>

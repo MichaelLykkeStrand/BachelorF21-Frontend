@@ -1,6 +1,7 @@
 <script context="module">
 	import { get } from '$lib/utils.js';
 	import TaskCard from '../../components/courses/task.svelte';
+	import Navbar from '../../components/newNavbar/newNavbar.svelte';
 	let userId;
 	export async function load({ page, session, fetch }) {
 		const { slug } = page.params;
@@ -24,6 +25,7 @@
 </script>
 
 <script>
+
 	export let course;
 
 	function handleClick() {
@@ -41,23 +43,27 @@
 <h5>{userId}</h5>
 {/if}
 
-
-<div class="container d-flex">
-    <div>
+<body>
+	<Navbar>
+	</Navbar>
+	<div class="container d-flex">
 		<div>
-			<h3 style="color:DimGrey;">{course.name}</h3>
-			
+			<div>
+				<h3 style="color:DimGrey;">{course.name}</h3>
+				
+			</div>
+			<div>
+				<h3 style="color:DimGrey;">Tasks</h3>
+				{#each course.tasks as taskId, i}
+					<br />
+					<TaskCard taskId={taskId} userId={userId}>
+					</TaskCard>
+	
+				{:else}
+					<p>You have not been assigned any tasks in this course!</p>
+				{/each}
+			</div>
 		</div>
-		<div>
-			<h3 style="color:DimGrey;">Tasks</h3>
-			{#each course.tasks as taskId, i}
-				<br />
-				<TaskCard taskId={taskId} userId={userId}>
-				</TaskCard>
+	</div>
+</body>
 
-			{:else}
-				<p>You have not been assigned any tasks in this course!</p>
-			{/each}
-		</div>
-    </div>
-</div>
