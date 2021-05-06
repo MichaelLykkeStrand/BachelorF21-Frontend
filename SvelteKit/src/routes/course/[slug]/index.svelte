@@ -28,8 +28,8 @@
 
 	export let course;
 
-	function handleClick() {
-			alert('clicked');
+	function handleClick(event) {
+			alert('clicked'+event.target);
 		}
 </script>
 
