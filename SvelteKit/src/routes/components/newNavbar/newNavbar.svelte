@@ -6,9 +6,9 @@
   
     // List of navigation items
     const navItems = [
-      { label: "Home", href: "/courses" },
+      { label: "✈", href: "/courses" },
       { label: "Courses", href: "/courses" },
-      { label: "About", href: "#" }
+      { label: "About", href: "/about" }
     ];
   
     // Mobile menu click event handler
