@@ -2,6 +2,8 @@
 	import CourseCard from './course_card.svelte'
     import { post } from '$lib/utils.js';
     import { onMount } from 'svelte';
+    import { session } from '$app/stores';
+    
 	let courseList = [];
 
     async function getCourses(){

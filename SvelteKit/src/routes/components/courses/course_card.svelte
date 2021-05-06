@@ -2,6 +2,7 @@
     import { get } from '$lib/utils.js';
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
+    import { session } from '$app/stores';
 
     export let courseId;
 

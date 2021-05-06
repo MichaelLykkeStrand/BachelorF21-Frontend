@@ -1,7 +1,8 @@
 <script>
 	import { get } from '$lib/utils.js';
 	import { onMount } from 'svelte';
-
+	import { session } from '$app/stores';
+	
 	export let taskId;
 	export let userId;
 
