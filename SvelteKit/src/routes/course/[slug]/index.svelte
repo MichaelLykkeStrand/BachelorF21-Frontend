@@ -12,7 +12,11 @@
 		} else {
 			try {
 				userId = session.user.userId;
-				isAdmin = session.user.isAdmin;
+				if(session.user.userData.permissionLevel == 2048){
+					isAdmin = true;
+				} else{
+					isAdmin = false;
+				}
 				let course = await fetch(`/course/${page.params.slug}.json`).then((r) => r.json());
 				return {
 					props: {

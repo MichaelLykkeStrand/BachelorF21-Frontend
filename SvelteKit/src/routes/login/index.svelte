@@ -9,11 +9,6 @@
         const res = await post("auth/login", user);
         
         if(res.user){
-			if(res.user.permissionLevel == 2048){
-				res.user.isAdmin = true;
-			} else{
-				res.user.isAdmin = false;
-			}
             $session.user = res.user;
             goto("/courses");    
         } else{
