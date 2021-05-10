@@ -7,7 +7,7 @@
 	export let userId;
 	export let modifiable;
 
-	let isAdmin
+	let hasChanges = false;
 	let task = {}; //Create empty object
 	async function getTask() {
 		try {
@@ -23,6 +23,11 @@
 			console.log('failed at getting task');
 		});
 	});
+
+	function handleSaveButtonClick(event) {
+		alert('clicked' + event.target);
+	}
+
 </script>
 
 {#if modifiable}
@@ -33,8 +38,10 @@
 				<div style="font-weight: bold;">Description</div>
 				<textarea class="w-75" value={task.description}></textarea>
 				<p>{task.assignedTo}</p>
-			<p>{task.completedBy}</p>
 		</blockquote>
+		<button on:click={handleSaveButtonClick} disabled={!hasChanges} type=submit>
+			Save
+		</button>
 	</div>
 </div>
 {:else}
@@ -47,7 +54,6 @@
 				<p>{task.description}</p>
 				<p>{task.assignedTo}</p>
 			{/if}
-			<p>{task.completedBy}</p>
 		</blockquote>
 	</div>
 </div>
@@ -56,4 +62,9 @@
 
 <style>
 	textarea { width: 100%; height: 200px; }
+	input {
+		display: block;
+		width: 500px;
+		max-width: 100%;
+	}
 </style>

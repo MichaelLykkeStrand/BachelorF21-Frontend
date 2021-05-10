@@ -34,19 +34,14 @@
 <script>
 	import { session } from '$app/stores';
 	export let course;
-
-	function handleClick(event) {
-		alert('clicked' + event.target);
+	
+	if(course != undefined){
+		if (course.instructors == userId){
+			modifiable = true;
+		}
 	}
+
 </script>
-
-<button on:click={handleClick}> Click me </button>
-<br />
-
-{#if course.instructors == userId}
-	<h5>{course.instructors}</h5>
-	<h5>{userId}</h5>
-{/if}
 
 <body>
 	<Navbar />
