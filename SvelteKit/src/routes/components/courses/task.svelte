@@ -8,6 +8,7 @@
 	export let modifiable;
 
 	let hasChanges = false;
+	let isVRTask = false;
 	let task = {}; //Create empty object
 	async function getTask() {
 		try {
@@ -28,6 +29,15 @@
 		alert('clicked' + event.target);
 	}
 
+	async function handleKeyup(event) {
+		if(event.target.value == task.description){
+			hasChanges = false
+		} else{
+			hasChanges = true;
+		}
+	}
+
+
 </script>
 
 {#if modifiable}
@@ -36,9 +46,14 @@
 	<div class="card-body">
 		<blockquote class="blockquote mb-0">
 				<div style="font-weight: bold;">Description</div>
-				<textarea class="w-75" value={task.description}></textarea>
+				<textarea class="w-75" value={task.description} on:keyup={handleKeyup}></textarea>
 				<p>{task.assignedTo}</p>
 		</blockquote>
+		<div class="form">
+			<input type=checkbox bind:checked={isVRTask} id="vr"> <label for="vr">Yes! This is a VR Task</label>
+		</div>
+
+		<br/>
 		<button on:click={handleSaveButtonClick} disabled={!hasChanges} type=submit>
 			Save
 		</button>
