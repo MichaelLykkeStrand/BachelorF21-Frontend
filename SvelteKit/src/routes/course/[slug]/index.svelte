@@ -4,7 +4,7 @@
 	import Navbar from '../../components/newNavbar/newNavbar.svelte';
 
 	let userId;
-	let isAdmin;
+	let modifiable;
 	export async function load({ page, session, fetch }) {
 		const { slug } = page.params;
 		if (!session.user) {
@@ -13,9 +13,9 @@
 			try {
 				userId = session.user.userId;
 				if(session.user.userData.permissionLevel == 2048){
-					isAdmin = true;
+					modifiable = true;
 				} else{
-					isAdmin = false;
+					modifiable = false;
 				}
 				let course = await fetch(`/course/${page.params.slug}.json`).then((r) => r.json());
 				return {
@@ -34,7 +34,6 @@
 <script>
 	import { session } from '$app/stores';
 	export let course;
-	alert(isAdmin);
 
 	function handleClick(event) {
 		alert('clicked' + event.target);
@@ -52,7 +51,7 @@
 <body>
 	<Navbar />
 	<div class="container d-flex">
-		<div>
+		<div class="w-100">
 			<div>
 				<h3 style="color:DimGrey;">{course.name}</h3>
 			</div>
@@ -60,7 +59,7 @@
 				<h3 style="color:DimGrey;">Tasks</h3>
 				{#each course.tasks as taskId, i}
 					<br />
-					<TaskCard {taskId} {userId} />
+					<TaskCard {taskId} {userId} {modifiable}/>
 				{:else}
 					<p>You have not been assigned any tasks in this course!</p>
 				{/each}

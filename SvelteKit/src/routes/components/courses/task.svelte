@@ -5,7 +5,9 @@
 	
 	export let taskId;
 	export let userId;
+	export let modifiable;
 
+	let isAdmin
 	let task = {}; //Create empty object
 	async function getTask() {
 		try {
@@ -23,7 +25,21 @@
 	});
 </script>
 
-
+{#if modifiable}
+<div class="card">
+	<h5 class="card-header" style="font-weight: bold; color:DimGrey;">{task.name}</h5>
+	<div class="card-body">
+		<blockquote class="blockquote mb-0">
+			{#if task.type != 'VR'}
+				<div style="font-weight: bold;">Description</div>
+				<textarea class="w-75" value={task.description}></textarea>
+				<p>{task.assignedTo}</p>
+			{/if}
+			<p>{task.completedBy}</p>
+		</blockquote>
+	</div>
+</div>
+{:else}
 <div class="card">
 	<h5 class="card-header" style="font-weight: bold; color:DimGrey;">{task.name}</h5>
 	<div class="card-body">
@@ -37,3 +53,9 @@
 		</blockquote>
 	</div>
 </div>
+{/if}
+
+
+<style>
+	textarea { width: 100%; height: 200px; }
+</style>
