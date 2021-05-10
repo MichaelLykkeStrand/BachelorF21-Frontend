@@ -30,11 +30,9 @@
 	<h5 class="card-header" style="font-weight: bold; color:DimGrey;">{task.name}</h5>
 	<div class="card-body">
 		<blockquote class="blockquote mb-0">
-			{#if task.type != 'VR'}
 				<div style="font-weight: bold;">Description</div>
 				<textarea class="w-75" value={task.description}></textarea>
 				<p>{task.assignedTo}</p>
-			{/if}
 			<p>{task.completedBy}</p>
 		</blockquote>
 	</div>
