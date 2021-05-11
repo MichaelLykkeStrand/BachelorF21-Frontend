@@ -41,6 +41,10 @@
 		}
 	}
 
+	function handleAddTaskButtonClick(event){
+		
+	}
+
 </script>
 
 <body>
@@ -52,6 +56,24 @@
 			</div>
 			<div>
 				<h3 style="color:DimGrey;">Tasks</h3>
+				<div class="card">
+					<h5 class="card-header" style="font-weight: bold; color:DimGrey;">Name</h5>
+					<div class="card-body">
+						<blockquote class="blockquote mb-0">
+								<div style="font-weight: bold;">Description</div>
+								<textarea class="w-75" ></textarea>
+						</blockquote>
+						<div class="form">
+							<input type=checkbox id="vr"> <label for="vr">VR Task</label>
+						</div>
+				
+						<br/>
+						<button on:click={handleAddTaskButtonClick} type=submit>
+							Add
+						</button>
+					</div>
+				</div>
+
 				{#each course.tasks as taskId, i}
 					<br />
 					<TaskCard {taskId} {userId} {modifiable}/>
