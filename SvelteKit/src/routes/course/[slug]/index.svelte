@@ -1,10 +1,14 @@
 <script context="module">
-	import { get } from '$lib/utils.js';
+	import { get,post } from '$lib/utils.js';
 	import TaskCard from '../../components/courses/task.svelte';
 	import Navbar from '../../components/newNavbar/newNavbar.svelte';
 
 	let userId;
 	let modifiable;
+
+
+
+
 	export async function load({ page, session, fetch }) {
 		const { slug } = page.params;
 		if (!session.user) {
@@ -33,8 +37,16 @@
 
 <script>
 	import { session } from '$app/stores';
+	import { goto } from '$app/navigation';
 	export let course;
-	
+
+
+	let task = {};
+	let isVRTask = false;
+	task.name = "";
+	task.description = "";
+	task.type = "";
+
 	if(course != undefined){
 		if (course.instructors == userId){
 			modifiable = true;
@@ -42,7 +54,13 @@
 	}
 
 	function handleAddTaskButtonClick(event){
-		
+		if(isVRTask){
+			task.type = "VR"
+		} else{
+			task.type = "NORMAL"
+		}
+		post('tasks/task',task);
+		goto("#");
 	}
 
 </script>
@@ -56,15 +74,16 @@
 			</div>
 			<div>
 				<h3 style="color:DimGrey;">Tasks</h3>
+				{#if {modifiable}}
 				<div class="card">
-					<input class="card-header" style="font-weight: bold; color:DimGrey;">
+					<input class="card-header" bind:value="{task.name}" style="font-weight: bold; color:DimGrey;">
 					<div class="card-body">
 						<blockquote class="blockquote mb-0">
 								<div style="font-weight: bold;">Description</div>
-								<textarea class="w-75"></textarea>
+								<textarea bind:value="{task.description}" class="w-75"></textarea>
 						</blockquote>
 						<div class="form">
-							<input type=checkbox id="vr"> <label for="vr">VR Task</label>
+							<input type=checkbox  bind:checked={isVRTask} id="vr"> <label for="vr">VR Task</label>
 						</div>
 				
 						<br/>
@@ -73,7 +92,7 @@
 						</button>
 					</div>
 				</div>
-
+				{/if}
 				{#each course.tasks as taskId, i}
 					<br />
 					<TaskCard {taskId} {userId} {modifiable}/>

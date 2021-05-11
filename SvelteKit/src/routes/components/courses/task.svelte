@@ -35,10 +35,9 @@
 			task.type = "NORMAL";
 		}
 		console.log(task+"Origin: Task.svelte")
-		let resp = await patch('tasks/task',task);
-		if(resp){
-			hasChanges = false;
-		}
+		hasChanges = false;
+		patch('tasks/task',task);
+
 	}
 
 	async function handleDeleteButtonClick(event){

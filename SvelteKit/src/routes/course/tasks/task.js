@@ -6,6 +6,11 @@ export async function get({ query, context}){
 	return respond(resp);
 }
 
+export async function post({query, body, context}){
+	console.log(body);
+    const resp = await api.post("coursesTask/",body,context.user.token);
+	return respond(resp);
+}
 
 export async function patch({query, body, context}){
 	console.log(body);

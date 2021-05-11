@@ -37,6 +37,7 @@ export function del(path, token) {
 }
 
 export function post(path, data, token) {
+    console.log("pathc L))D)SAdas"+data);
     return send({ method: 'POST', path, data, token });
 }
 
@@ -45,6 +46,5 @@ export function put(path, data, token) {
 }
 
 export function patch(path, data, token) {
-    console.log("pathc L))D)SAdas"+data);
     return send({ method: 'PATCH', path, data, token });
 }
