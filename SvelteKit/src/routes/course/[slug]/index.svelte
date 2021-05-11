@@ -57,11 +57,11 @@
 			<div>
 				<h3 style="color:DimGrey;">Tasks</h3>
 				<div class="card">
-					<h5 class="card-header" style="font-weight: bold; color:DimGrey;">Name</h5>
+					<input class="card-header" style="font-weight: bold; color:DimGrey;">
 					<div class="card-body">
 						<blockquote class="blockquote mb-0">
 								<div style="font-weight: bold;">Description</div>
-								<textarea class="w-75" ></textarea>
+								<textarea class="w-75"></textarea>
 						</blockquote>
 						<div class="form">
 							<input type=checkbox id="vr"> <label for="vr">VR Task</label>
