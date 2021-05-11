@@ -15,6 +15,9 @@
 			let resp = await get('tasks/task?taskId=' + taskId);
 			task = resp;
 			task = task;
+			if(task.type == "VR"){
+				isVRTask = true;
+			}
 		} catch (err) {
 			console.log(err);
 		}
@@ -27,6 +30,10 @@
 
 	function handleSaveButtonClick(event) {
 		alert('clicked' + event.target);
+	}
+
+	function handleDeleteButtonClick(event){
+
 	}
 
 	async function handleKeyup(event) {
@@ -50,12 +57,15 @@
 				<p>{task.assignedTo}</p>
 		</blockquote>
 		<div class="form">
-			<input type=checkbox bind:checked={isVRTask} id="vr"> <label for="vr">Yes! This is a VR Task</label>
+			<input type=checkbox bind:checked={isVRTask} id="vr"> <label for="vr">VR Task</label>
 		</div>
 
 		<br/>
 		<button on:click={handleSaveButtonClick} disabled={!hasChanges} type=submit>
 			Save
+		</button>
+		<button on:click={handleDeleteButtonClick} type=submit>
+			Delete
 		</button>
 	</div>
 </div>
