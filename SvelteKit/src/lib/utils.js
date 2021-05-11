@@ -27,7 +27,6 @@ export async function get(endpoint, data) {
 			'Content-Type': 'application/json'
 		}
 	}).then((r) => r.json());
-
 }
 
 export async function patch(endpoint, data) {

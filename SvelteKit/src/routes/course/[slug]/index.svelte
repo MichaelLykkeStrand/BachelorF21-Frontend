@@ -38,6 +38,7 @@
 <script>
 	import { session } from '$app/stores';
 	import { goto } from '$app/navigation';
+import { patch } from '$lib/api';
 	export let course;
 
 
@@ -46,6 +47,7 @@
 	task.name = "";
 	task.description = "";
 	task.type = "";
+	task.courseID = course._id;
 
 	if(course != undefined){
 		if (course.instructors == userId){
@@ -59,8 +61,13 @@
 		} else{
 			task.type = "NORMAL"
 		}
-		post('tasks/task',task);
-		goto("#");
+		let response = post('tasks/task',task);
+
+		let newTask;
+		response.then((res)=>{
+			newTask = res.result;
+		})
+		//TODO goto("#");
 	}
 
 </script>
