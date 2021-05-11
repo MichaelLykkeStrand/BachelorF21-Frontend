@@ -12,7 +12,7 @@ export async function get({ params, context }){
             }
 		};
     } catch (err) {
-        console.log('yep cock :' + err);
+        console.log(err);
     }
 }
 

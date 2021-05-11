@@ -1,13 +1,12 @@
 const base = 'http://localhost:3600';
+let token = ''
 
 async function send({ method, path, data, token }) {
     const opts = { method, headers: {} };
-
     if (data) {
         opts.headers['Content-Type'] = 'application/json';
         opts.body = JSON.stringify(data);
     }
-
     if (token) {
         opts.headers['Authorization'] = `Bearer ${token}`;
     }
@@ -16,7 +15,7 @@ async function send({ method, path, data, token }) {
         typeof window !== 'undefined'
             ? window.fetch
             : await import('node-fetch').then((mod) => mod.default);
-            
+    console.log(`${base}/${path}`);
     return fetch(`${base}/${path}`, opts)
         .then((r) => r.text())
         .then((json) => {
@@ -43,4 +42,9 @@ export function post(path, data, token) {
 
 export function put(path, data, token) {
     return send({ method: 'PUT', path, data, token });
+}
+
+export function patch(path, data, token) {
+    console.log("pathc L))D)SAdas"+data);
+    return send({ method: 'PATCH', path, data, token });
 }
