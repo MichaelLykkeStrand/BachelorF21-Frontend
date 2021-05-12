@@ -1,5 +1,5 @@
 <script>
-	import { get,patch } from '$lib/utils.js';
+	import { get,patch,del } from '$lib/utils.js';
 	import { onMount } from 'svelte';
 	import { session } from '$app/stores';
 
@@ -41,7 +41,8 @@
 	}
 
 	async function handleDeleteButtonClick(event){
-
+		console.log("called "+taskId);
+		del('tasks/task?taskId=' + taskId);
 	}
 
 	function handleChange(event){

@@ -6,9 +6,6 @@
 	let userId;
 	let modifiable;
 
-
-
-
 	export async function load({ page, session, fetch }) {
 		const { slug } = page.params;
 		if (!session.user) {
@@ -62,12 +59,11 @@ import { patch } from '$lib/api';
 			task.type = "NORMAL"
 		}
 		let response = post('tasks/task',task);
-
 		let newTask;
 		response.then((res)=>{
 			newTask = res.result;
+			location.reload(); 
 		})
-		//TODO goto("#");
 	}
 
 </script>

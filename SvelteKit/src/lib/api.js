@@ -20,6 +20,7 @@ async function send({ method, path, data, token }) {
         .then((r) => r.text())
         .then((json) => {
             try {
+                console.log("JSON:"+json);
                 return JSON.parse(json);
             } catch (err) {
                 return json;
@@ -28,16 +29,17 @@ async function send({ method, path, data, token }) {
 }
 
 export function get(path, token) {
-    //console.log("aep: " + path);
+    console.log("GET: "+ path);
     return send({ method: 'GET', path, token });
 }
 
 export function del(path, token) {
+    console.log("DELETE: "+path);
     return send({ method: 'DELETE', path, token });
 }
 
 export function post(path, data, token) {
-    console.log("pathc L))D)SAdas"+data);
+    console.log("PATCH: "+data);
     return send({ method: 'POST', path, data, token });
 }
 

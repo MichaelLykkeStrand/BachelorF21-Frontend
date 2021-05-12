@@ -45,3 +45,18 @@ export async function patch(endpoint, data) {
 		}
 	}).then((r) => r.json());
 }
+
+export async function del(endpoint, data) {
+	const fetch =
+		typeof window !== 'undefined'
+			? window.fetch
+			: await import('node-fetch').then((mod) => mod.default);
+
+	return fetch(endpoint, {
+		method: 'DELETE',
+		credentials: 'include',
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}).then((r) => r.json());
+}
