@@ -60,7 +60,6 @@
 		<blockquote class="blockquote mb-0">
 				<div style="font-weight: bold;">Description</div>
 				<textarea class="w-75" bind:value={task.description} on:keyup={handleChange}></textarea>
-				<p>{task.assignedTo}</p>
 		</blockquote>
 		<div class="form">
 			<input type=checkbox bind:checked={isVRTask} id="vr" on:click={handleChange}> <label for="vr">VR Task</label>
@@ -82,7 +81,6 @@
 			{#if task.type != 'VR'}
 				<div style="font-weight: bold;">Description</div>
 				<p>{task.description}</p>
-				<p>{task.assignedTo}</p>
 			{/if}
 		</blockquote>
 	</div>
