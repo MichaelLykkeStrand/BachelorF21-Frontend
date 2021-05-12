@@ -100,7 +100,7 @@ import { patch } from '$lib/api';
 					<br />
 					<TaskCard {taskId} {userId} {modifiable}/>
 				{:else}
-					<p>You have not been assigned any tasks in this course!</p>
+					<p>There are no tasks yet!</p>
 				{/each}
 			</div>
 		</div>

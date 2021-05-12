@@ -42,7 +42,8 @@
 
 	async function handleDeleteButtonClick(event){
 		console.log("called "+taskId);
-		del('tasks/task?taskId=' + taskId);
+		await del('tasks/task?taskId=' + taskId);
+		location.reload(); 
 	}
 
 	function handleChange(event){
