@@ -7,6 +7,9 @@
 	export let userId;
 	export let modifiable;
 
+	let theme = "color:DimGrey";
+	let completedTheme = "background-color:DarkSeaGreen"
+	let isCompleted = false;
 	let hasChanges = false;
 	let isVRTask = false;
 	let task = {}; //Create empty object
@@ -15,6 +18,13 @@
 			let resp = await get('tasks/task?taskId=' + taskId);
 			task = resp;
 			task = task;
+			task.completedBy.forEach(user => {
+				console.log("Them: "+user._id+" Me: "+userId);
+				if(user._id == userId){
+					isCompleted = true;
+					theme = completedTheme;
+				}
+			});
 			if(task.type == "VR"){
 				isVRTask = true;
 			}
@@ -46,6 +56,10 @@
 		location.reload(); 
 	}
 
+	async function handleSubmitTaskButtonClick(event){
+
+	}
+
 	function handleChange(event){
 		hasChanges = true;
 	}
@@ -53,9 +67,9 @@
 
 </script>
 
-{#if modifiable}
+{#if !modifiable}
 <div class="card">
-	<input class="card-header" style="font-weight: bold; color:DimGrey;" bind:value={task.name} on:keyup={handleChange}>
+	<input class="card-header" style="font-weight: bold; {theme};" bind:value={task.name} on:keyup={handleChange}>
 	<div class="card-body">
 		<blockquote class="blockquote mb-0">
 				<div style="font-weight: bold;">Description</div>
@@ -75,12 +89,13 @@
 </div>
 {:else}
 <div class="card">
-	<h5 class="card-header" style="font-weight: bold; color:DimGrey;">{task.name}</h5>
+	<h5 class="card-header" style="font-weight: bold; {theme};">{task.name}</h5>
 	<div class="card-body">
 		<blockquote class="blockquote mb-0">
 			{#if task.type != 'VR'}
 				<div style="font-weight: bold;">Description</div>
 				<p>{task.description}</p>
+				<p>{task.completedBy}</p>
 			{/if}
 		</blockquote>
 	</div>
@@ -90,5 +105,4 @@
 
 <style>
 	textarea { width: 100%; height: 200px; }
-
 </style>
