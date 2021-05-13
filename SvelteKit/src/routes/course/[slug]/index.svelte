@@ -4,7 +4,7 @@
 	import Navbar from '../../components/newNavbar/newNavbar.svelte';
 
 	let userId;
-	let modifiable;
+	let modifiable = false;
 
 	export async function load({ page, session, fetch }) {
 		const { slug } = page.params;
@@ -15,8 +15,6 @@
 				userId = session.user.userId;
 				if(session.user.userData.permissionLevel == 2048){
 					modifiable = true;
-				} else{
-					modifiable = false;
 				}
 				let course = await fetch(`/course/${page.params.slug}.json`).then((r) => r.json());
 				return {
@@ -46,8 +44,8 @@ import { patch } from '$lib/api';
 	task.type = "";
 	task.courseID = course._id;
 
-	if(course != undefined){
-		if (course.instructors == userId){
+	if(course.instructors != undefined){
+		if (course.instructors.includes(userId)){
 			modifiable = true;
 		}
 	}
@@ -77,7 +75,7 @@ import { patch } from '$lib/api';
 			</div>
 			<div>
 				<h3 style="color:DimGrey;">Tasks</h3>
-				{#if {modifiable}}
+				{#if modifiable}
 				<div class="card">
 					<input class="card-header" bind:value="{task.name}" style="font-weight: bold; color:DimGrey;">
 					<div class="card-body">

@@ -13,6 +13,9 @@
 	let hasChanges = false;
 	let isVRTask = false;
 	let task = {}; //Create empty object
+
+	$: completedBy = [];
+
 	async function getTask() {
 		try {
 			let resp = await get('tasks/task?taskId=' + taskId);
@@ -24,6 +27,13 @@
 					isCompleted = true;
 					theme = completedTheme;
 				}
+				
+				if(user != undefined){
+					completedBy = completedBy
+					completedBy.push({firstName: user.firstName, lastName: user.lastName});
+				}
+				
+				console.log(completedBy);
 			});
 			if(task.type == "VR"){
 				isVRTask = true;
@@ -86,6 +96,19 @@
 			Delete
 		</button>
 	</div>
+	<div class="card">
+		<div class="card-body">
+			<blockquote class="blockquote mb-0">
+				<div style="font-weight: bold;">Completed by:</div>
+					{#each completedBy as {firstName, lastName}}
+					<p>{firstName+ " "+lastName}</p>
+					{:else}
+					<p>Nobody has completed this task yet!</p>
+					{/each}
+
+		</blockquote>
+		</div>
+	</div>
 </div>
 {:else}
 <div class="card">
@@ -95,9 +118,14 @@
 			{#if task.type != 'VR'}
 				<div style="font-weight: bold;">Description</div>
 				<p>{task.description}</p>
-				<p>{task.completedBy}</p>
 			{/if}
 		</blockquote>
+		{#if !isCompleted}
+		<br/>
+		<button on:click={handleSubmitTaskButtonClick} type=submit>
+			Complete
+		</button>
+		{/if}
 	</div>
 </div>
 {/if}
