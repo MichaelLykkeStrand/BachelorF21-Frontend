@@ -67,7 +67,7 @@
 
 </script>
 
-{#if !modifiable}
+{#if modifiable}
 <div class="card">
 	<input class="card-header" style="font-weight: bold; {theme};" bind:value={task.name} on:keyup={handleChange}>
 	<div class="card-body">
