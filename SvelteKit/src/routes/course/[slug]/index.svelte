@@ -31,11 +31,7 @@
 </script>
 
 <script>
-	import { session } from '$app/stores';
-	import { goto } from '$app/navigation';
-import { patch } from '$lib/api';
 	export let course;
-
 
 	let task = {};
 	let isVRTask = false;
@@ -94,9 +90,7 @@ import { patch } from '$lib/api';
 						<div class="form">
 							<input class="form-check-input" type=checkbox  bind:checked={isVRTask} id="vr"> <label for="vr">VR Task</label>
 						</div>
-				
 						<br/>
-						
 						<button class="btn btn-success" on:click={handleAddTaskButtonClick} type=submit>
 							Add
 						</button>

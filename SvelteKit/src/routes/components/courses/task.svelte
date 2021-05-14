@@ -127,14 +127,15 @@
 	<h5 class="card-header" style="font-weight: bold; {theme};">{task.name}</h5>
 	<div class="card-body">
 		<blockquote class="blockquote mb-0">
-			{#if task.type != 'VR'}
+			{#if task.type == 'VR'}
+			<img style="float: right; width: 40px; height: 40px" src="../VR-512.webp" alt="background image" />
+			{/if}
 				<div style="font-weight: bold;">Description</div>
 				<p>{task.description}</p>
-			{/if}
 		</blockquote>
-		{#if !isCompleted}
+		{#if !isCompleted && !isVRTask}
 		<br/>
-		<button on:click={handleSubmitTaskButtonClick} type=submit>
+		<button class="btn btn-success" on:click={handleSubmitTaskButtonClick} type=submit>
 			Complete
 		</button>
 		{/if}
