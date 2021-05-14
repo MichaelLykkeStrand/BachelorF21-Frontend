@@ -104,7 +104,7 @@
 	<div class="card">
 		<div class="card-body">
 			<blockquote class="blockquote mb-0">
-				<button on:click={expandCompletedByButtonClick} class="btn btn-secondary">Completed by</button>
+				<button on:click={expandCompletedByButtonClick} class="btn btn-secondary dropdown-toggle">Completed by</button>
 				{#if expandCompletedBy}
 				<br/>
 				<ul class="list-group">
