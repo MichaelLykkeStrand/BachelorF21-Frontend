@@ -39,6 +39,8 @@ import { patch } from '$lib/api';
 
 	let task = {};
 	let isVRTask = false;
+	let expandAddNewTask = false;
+
 	task.name = "";
 	task.description = "";
 	task.type = "";
@@ -64,6 +66,10 @@ import { patch } from '$lib/api';
 		})
 	}
 
+	async function expandAddButtonClick(event){
+		expandAddNewTask = !expandAddNewTask;
+	}
+
 </script>
 
 <body>
@@ -76,6 +82,8 @@ import { patch } from '$lib/api';
 			<div>
 				<h3 style="color:DimGrey;">Tasks</h3>
 				{#if modifiable}
+				<button on:click={expandAddButtonClick} class="btn btn-secondary dropdown-toggle">New Task</button>
+				{#if expandAddNewTask}
 				<div class="card">
 					<input class="card-header form-control" bind:value="{task.name}" style="font-weight: bold; color:DimGrey;" placeholder="Task name">
 					<div class="card-body">
@@ -88,11 +96,14 @@ import { patch } from '$lib/api';
 						</div>
 				
 						<br/>
+						
 						<button class="btn btn-success" on:click={handleAddTaskButtonClick} type=submit>
 							Add
 						</button>
 					</div>
 				</div>
+				{/if}
+				<br/>
 				{/if}
 				{#each course.tasks as taskId, i}
 					<br />
@@ -100,6 +111,7 @@ import { patch } from '$lib/api';
 				{:else}
 					<p>There are no tasks yet!</p>
 				{/each}
+				
 			</div>
 			<br/>
 		</div>
