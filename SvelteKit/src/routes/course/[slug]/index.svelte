@@ -101,6 +101,7 @@ import { patch } from '$lib/api';
 					<p>There are no tasks yet!</p>
 				{/each}
 			</div>
+			<br/>
 		</div>
 	</div>
 </body>

@@ -107,12 +107,16 @@
 				<button on:click={expandCompletedByButtonClick} class="btn btn-secondary">Completed by</button>
 				{#if expandCompletedBy}
 				<br/>
+				<ul class="list-group">
 					{#each completedBy as {firstName, lastName}}
-					<a href="https://www.w3schools.com">>{firstName+ " "+lastName}</a>
+					<li class="list-group-item d-flex justify-content-between align-items-center">
+						{firstName+ " "+lastName}
+					</li>
 					<br/>
 					{:else}
 					<p>Nobody has completed this task yet!</p>
 					{/each}
+				</ul>
 				{/if}
 		</blockquote>
 		</div>
