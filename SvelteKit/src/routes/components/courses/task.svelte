@@ -114,7 +114,9 @@
 					</li>
 					<br/>
 					{:else}
-					<p>Nobody has completed this task yet!</p>
+					<li class="list-group-item d-flex justify-content-between align-items-center">
+						Nobody has completed this task yet!
+					</li>
 					{/each}
 				</ul>
 				{/if}
