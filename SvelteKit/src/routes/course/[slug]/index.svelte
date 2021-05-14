@@ -77,18 +77,18 @@ import { patch } from '$lib/api';
 				<h3 style="color:DimGrey;">Tasks</h3>
 				{#if modifiable}
 				<div class="card">
-					<input class="card-header" bind:value="{task.name}" style="font-weight: bold; color:DimGrey;">
+					<input class="card-header form-control" bind:value="{task.name}" style="font-weight: bold; color:DimGrey;" placeholder="Task name">
 					<div class="card-body">
 						<blockquote class="blockquote mb-0">
 								<div style="font-weight: bold;">Description</div>
-								<textarea bind:value="{task.description}" class="w-75"></textarea>
+								<textarea bind:value="{task.description}" class="w-75 form-control"></textarea>
 						</blockquote>
 						<div class="form">
-							<input type=checkbox  bind:checked={isVRTask} id="vr"> <label for="vr">VR Task</label>
+							<input class="form-check-input" type=checkbox  bind:checked={isVRTask} id="vr"> <label for="vr">VR Task</label>
 						</div>
 				
 						<br/>
-						<button on:click={handleAddTaskButtonClick} type=submit>
+						<button class="btn btn-success" on:click={handleAddTaskButtonClick} type=submit>
 							Add
 						</button>
 					</div>

@@ -14,6 +14,7 @@
 	let isVRTask = false;
 	let task = {}; //Create empty object
 
+	let expandCompletedBy = false;
 	$: completedBy = [];
 
 	async function getTask() {
@@ -70,6 +71,10 @@
 
 	}
 
+	async function expandCompletedByButtonClick(event){
+		expandCompletedBy = !expandCompletedBy;
+	}
+
 	function handleChange(event){
 		hasChanges = true;
 	}
@@ -79,33 +84,36 @@
 
 {#if modifiable}
 <div class="card">
-	<input class="card-header" style="font-weight: bold; {theme};" bind:value={task.name} on:keyup={handleChange}>
+	<input class="card-header form-control" style="font-weight: bold; {theme};" bind:value={task.name} on:keyup={handleChange}>
 	<div class="card-body">
 		<blockquote class="blockquote mb-0">
 				<div style="font-weight: bold;">Description</div>
-				<textarea class="w-75" bind:value={task.description} on:keyup={handleChange}></textarea>
+				<textarea class="w-75 form-control" bind:value={task.description} on:keyup={handleChange}></textarea>
 		</blockquote>
 		<div class="form">
-			<input type=checkbox bind:checked={isVRTask} id="vr" on:click={handleChange}> <label for="vr">VR Task</label>
+			<input class="form-check-input" type=checkbox bind:checked={isVRTask} id="vr" on:click={handleChange}> <label for="vr">VR Task</label>
 		</div>
 		<br/>
-		<button on:click={handleSaveButtonClick} disabled={!hasChanges} type=submit>
+		<button class="btn btn-success" on:click={handleSaveButtonClick} disabled={!hasChanges} type=submit>
 			Save
 		</button>
-		<button on:click={handleDeleteButtonClick} type=submit>
+		<button class="btn btn-danger" on:click={handleDeleteButtonClick} type=submit>
 			Delete
 		</button>
 	</div>
 	<div class="card">
 		<div class="card-body">
 			<blockquote class="blockquote mb-0">
-				<div style="font-weight: bold;">Completed by:</div>
+				<button on:click={expandCompletedByButtonClick} class="btn btn-secondary">Completed by</button>
+				{#if expandCompletedBy}
+				<br/>
 					{#each completedBy as {firstName, lastName}}
-					<p>{firstName+ " "+lastName}</p>
+					<a href="https://www.w3schools.com">>{firstName+ " "+lastName}</a>
+					<br/>
 					{:else}
 					<p>Nobody has completed this task yet!</p>
 					{/each}
-
+				{/if}
 		</blockquote>
 		</div>
 	</div>
