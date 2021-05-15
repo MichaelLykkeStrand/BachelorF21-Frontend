@@ -56,8 +56,8 @@
 			task.type = "NORMAL";
 		}
 		console.log(task+"Origin: Task.svelte")
-		hasChanges = false;
 		patch('tasks/task',task);
+		hasChanges = false;
 
 	}
 
