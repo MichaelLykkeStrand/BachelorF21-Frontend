@@ -1,5 +1,5 @@
 <script>
-	import { get,patch,del } from '$lib/utils.js';
+	import { get,patch,del,post } from '$lib/utils.js';
 	import { onMount } from 'svelte';
 	import { session } from '$app/stores';
 
@@ -68,7 +68,8 @@
 	}
 
 	async function handleSubmitTaskButtonClick(event){
-
+		let resp = await post('tasks/taskComplete',task);
+		location.reload(); 
 	}
 
 	async function expandCompletedByButtonClick(event){
