@@ -68,8 +68,10 @@
 	}
 
 	async function handleSubmitTaskButtonClick(event){
-		let resp = await post('tasks/taskComplete',task);
-		location.reload(); 
+		post('tasks/taskComplete',task);
+		isCompleted = true;
+		theme = completedTheme;
+
 	}
 
 	async function expandCompletedByButtonClick(event){
