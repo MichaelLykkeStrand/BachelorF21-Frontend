@@ -31,7 +31,7 @@
 				
 				if(user != undefined){
 					completedBy = completedBy
-					completedBy.push({firstName: user.firstName, lastName: user.lastName});
+					completedBy.push({firstName: user.firstName, lastName: user.lastName, userId: user._id});
 				}
 				
 				console.log(completedBy);
@@ -78,8 +78,20 @@
 		expandCompletedBy = !expandCompletedBy;
 	}
 
-	function handleChange(event){
+	async function handleChange(event){
 		hasChanges = true;
+	}
+
+	async function handlePerformanceButtonClick(userId){
+		console.log(userId);
+		//let resp = await get('tasks/task?taskId=' + taskId);
+		let body = {taskId,userId};
+		let resp = await post('progress/progress',body);
+		if(resp.progress){
+			//TODO
+		} else{
+			alert("Progress could not be found");
+		}
 	}
 
 
@@ -111,9 +123,12 @@
 				{#if expandCompletedBy}
 				<br/>
 				<ul class="list-group">
-					{#each completedBy as {firstName, lastName}}
+					{#each completedBy as {firstName, lastName, userId}}
 					<li class="list-group-item d-flex justify-content-between align-items-center">
 						{firstName+ " "+lastName}
+						<button class="btn btn-secondary dropdown-toggle" on:click={() => handlePerformanceButtonClick(userId)}>
+							Progress
+						</button>				
 					</li>
 					<br/>
 					{:else}
