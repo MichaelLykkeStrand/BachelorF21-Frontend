@@ -2,6 +2,7 @@
 	import { get,patch,del,post } from '$lib/utils.js';
 	import { onMount } from 'svelte';
 	import { session } from '$app/stores';
+	import {format} from '$lib/timeFormatter.js';
 
 	export let taskId;
 	export let userId;
@@ -15,23 +16,28 @@
 	let task = {}; //Create empty object
 
 	let expandCompletedBy = false;
+	let expandProgress = false;
 	$: completedBy = [];
 
 	async function getTask() {
+		
 		try {
 			let resp = await get('tasks/task?taskId=' + taskId);
+			
 			task = resp;
 			task = task;
-			task.completedBy.forEach(user => {
+			await task.completedBy.forEach(async user => {
 				console.log("Them: "+user._id+" Me: "+userId);
 				if(user._id == userId){
 					isCompleted = true;
 					theme = completedTheme;
 				}
-				
 				if(user != undefined){
+					let userId = user._id
+					let body = {taskId, userId};
+					let progress = await post('progress/progress',body);
 					completedBy = completedBy
-					completedBy.push({firstName: user.firstName, lastName: user.lastName, userId: user._id});
+					completedBy.push({firstName: user.firstName, lastName: user.lastName, userId: user._id, timeUsed: progress.timeUsed, timesPaused: progress.timesPaused});
 				}
 				
 				console.log(completedBy);
@@ -78,6 +84,7 @@
 		expandCompletedBy = !expandCompletedBy;
 	}
 
+
 	async function handleChange(event){
 		hasChanges = true;
 	}
@@ -123,13 +130,15 @@
 				{#if expandCompletedBy}
 				<br/>
 				<ul class="list-group">
-					{#each completedBy as {firstName, lastName, userId}}
+					{#each completedBy as {firstName, lastName, userId, timeUsed, timesPaused}}
 					<li class="list-group-item d-flex justify-content-between align-items-center">
 						{firstName+ " "+lastName}
 						{#if isVRTask}
-						<button class="btn btn-secondary dropdown-toggle" on:click={() => handlePerformanceButtonClick(userId)}>
-							Progress
-						</button>		
+						<div>
+							<span class="badge alert-success">{"Time used: "+format(timeUsed)}</span>
+							<span class="badge alert-success">{"Times paused: "+timesPaused}</span>
+						</div>
+
 						{/if}		
 					</li>
 					<br/>
