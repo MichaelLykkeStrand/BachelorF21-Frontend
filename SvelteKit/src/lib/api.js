@@ -1,5 +1,5 @@
 const base = 'http://localhost:3600';
-let token = ''
+
 
 async function send({ method, path, data, token }) {
     const opts = { method, headers: {} };

@@ -8,8 +8,8 @@
     const navItems = [
       { label: "✈", href: "/courses" },
       { label: "Courses", href: "/courses" },
-      { label: "Performance", href: "/performance" },
-      { label: "About", href: "/about" }
+      { label: "About", href: "/about" },
+      { label: "Logout", href: "/logout" },
     ];
   
     // Mobile menu click event handler
