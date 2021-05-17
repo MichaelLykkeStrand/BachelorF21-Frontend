@@ -133,7 +133,7 @@
 					{#each completedBy as {firstName, lastName, userId, timeUsed, timesPaused}}
 					<li class="list-group-item d-flex justify-content-between align-items-center">
 						{firstName+ " "+lastName}
-						{#if isVRTask}
+						{#if isVRTask && timeUsed && timesPaused}
 						<div>
 							<span class="badge alert-success">{"Time used: "+format(timeUsed)}</span>
 							<span class="badge alert-success">{"Times paused: "+timesPaused}</span>
