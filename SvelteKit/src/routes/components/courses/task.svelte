@@ -126,9 +126,11 @@
 					{#each completedBy as {firstName, lastName, userId}}
 					<li class="list-group-item d-flex justify-content-between align-items-center">
 						{firstName+ " "+lastName}
+						{#if isVRTask}
 						<button class="btn btn-secondary dropdown-toggle" on:click={() => handlePerformanceButtonClick(userId)}>
 							Progress
-						</button>				
+						</button>		
+						{/if}		
 					</li>
 					<br/>
 					{:else}
