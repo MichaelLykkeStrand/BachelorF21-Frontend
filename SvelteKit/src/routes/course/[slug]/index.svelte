@@ -13,6 +13,7 @@
 		} else {
 			try {
 				userId = session.user.userId;
+				console.log("Current user: "+userId)
 				if(session.user.userData.permissionLevel == 2048){
 					modifiable = true;
 				}
@@ -41,6 +42,10 @@
 	task.description = "";
 	task.type = "";
 	task.courseID = course._id;
+
+	if(userId == undefined){
+		location.reload(); 
+	}
 
 	if(course.instructors != undefined){
 		if (course.instructors.includes(userId)){
