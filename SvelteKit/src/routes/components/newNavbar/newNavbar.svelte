@@ -8,7 +8,7 @@
     const navItems = [
       { label: "✈", href: "/courses" },
       { label: "Courses", href: "/courses" },
-      { label: "About", href: "/about" },
+      { label: "About", href: "https://github.com/MichaelLykkeStrand/BachelorF21-Frontend" },
       { label: "Logout", href: "/logout" },
     ];
   
