@@ -78,10 +78,12 @@
 	<div class="container d-flex">
 		<div class="w-100">
 			<div>
-				<h3 style="color:DimGrey;">{course.name}</h3>
+				<br/>
+				<h4 class=" display-5 color:DimGrey;">{course.name}</h4>
 			</div>
+			<hr/>
 			<div>
-				<h3 style="color:DimGrey;">Tasks</h3>
+				<h5 class=" display-6 color:DimGrey;">Tasks</h5>
 				{#if modifiable}
 				<button on:click={expandAddButtonClick} class="btn btn-secondary dropdown-toggle">New Task</button>
 				{#if expandAddNewTask}
