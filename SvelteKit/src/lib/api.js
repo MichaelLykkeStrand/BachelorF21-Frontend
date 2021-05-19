@@ -1,4 +1,4 @@
-const base = 'http://localhost:3600';
+const base = 'http://backend:3600';
 
 
 async function send({ method, path, data, token }) {
@@ -16,6 +16,7 @@ async function send({ method, path, data, token }) {
             ? window.fetch
             : await import('node-fetch').then((mod) => mod.default);
     console.log(`${base}/${path}`);
+    console.log("REQUEST DATA: " + data);
     return fetch(`${base}/${path}`, opts)
         .then((r) => r.text())
         .then((json) => {

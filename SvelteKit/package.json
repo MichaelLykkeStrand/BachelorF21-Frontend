@@ -5,11 +5,16 @@
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
 		"start": "svelte-kit start",
+		"preview": "svelte-kit preview",
 		"lint": "prettier --check . && eslint --ignore-path .gitignore .",
 		"format": "prettier --write ."
 	},
-	"devDependencies": {
-		"@sveltejs/adapter-node": "1.0.0-next.17",
+	"devDependencies": {},
+	"type": "module",
+	"dependencies": {
+		"cookie": "^0.4.1",
+		"node-fetch": "^2.6.1",
+		"@sveltejs/adapter-node": "1.0.0-next.12",
 		"@sveltejs/kit": "1.0.0-next.71",
 		"svelte": "^3.29.0",
 		"vite": "^2.1.0",
@@ -24,10 +29,5 @@
 		"prettier": "~2.2.1",
 		"prettier-plugin-svelte": "^2.2.0",
 		"eslint-config-prettier": "^8.1.0"
-	},
-	"type": "module",
-	"dependencies": {
-		"cookie": "^0.4.1",
-		"node-fetch": "^2.6.1"
 	}
 }
