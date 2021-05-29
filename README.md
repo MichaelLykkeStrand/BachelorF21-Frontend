@@ -2,7 +2,7 @@
 
 Frontend Svelte service for the ATSEE System.
 
-## Developing
+## Development
 
 Once you've cloned the project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start the development server by:
 
