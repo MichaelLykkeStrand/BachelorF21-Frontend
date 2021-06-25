@@ -1,4 +1,4 @@
-const base = 'http://backend:3600';
+const base = 'http://localhost:3600';
 
 
 async function send({ method, path, data, token }) {
